@@ -30,6 +30,7 @@ class _HomePageState extends State<HomePage> {
     final highlighted = matches.first;
     return Scaffold(
       appBar: AppBar(
+      
         title: const Text('TecBet'),
         backgroundColor: Colors.white,
         elevation: 1,
