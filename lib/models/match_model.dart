@@ -1,28 +1,21 @@
 class MatchModel {
-  final int id;
-  final String homeTeam;
-  final String awayTeam;
-  final String date; // ISO string
-  final String league;
+  final String id;
+  final String home;
+  final String away;
+  final double homeOdds;
+  final double drawOdds;
+  final double awayOdds;
+  final DateTime date;
+  final bool live;
 
   MatchModel({
     required this.id,
-    required this.homeTeam,
-    required this.awayTeam,
+    required this.home,
+    required this.away,
+    required this.homeOdds,
+    required this.drawOdds,
+    required this.awayOdds,
     required this.date,
-    required this.league,
+    this.live = false,
   });
-
-  factory MatchModel.fromJson(Map<String, dynamic> json) {
-    final fixture = json['fixture'];
-    final teams = json['teams'];
-    final league = json['league'];
-    return MatchModel(
-      id: fixture['id'] as int,
-      homeTeam: teams['home']['name'] as String,
-      awayTeam: teams['away']['name'] as String,
-      date: fixture['date'] as String,
-      league: league['name'] as String,
-    );
-  }
 }
