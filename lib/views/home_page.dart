@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
 
   void _toggleAddToSlip() {
     setState(() {
-      betItems = (betItems + 1) % 5; 
+      betItems = (betItems + 1) % 5;
     });
   }
 
@@ -35,7 +35,8 @@ class _HomePageState extends State<HomePage> {
         elevation: 1,
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none)),
+          IconButton(
+              onPressed: () {}, icon: const Icon(Icons.notifications_none)),
           const SizedBox(width: 8),
         ],
       ),
@@ -43,21 +44,28 @@ class _HomePageState extends State<HomePage> {
         children: [
           RefreshIndicator(
             onRefresh: () async {
-              // apenas efeito visual
+              
               await Future.delayed(const Duration(milliseconds: 700));
               setState(() {});
             },
             child: CustomScrollView(
               slivers: [
-                SliverToBoxAdapter(child: HighlightMatch(match: highlighted, onTap: () => _openMatch(highlighted))),
+                SliverToBoxAdapter(
+                    child: HighlightMatch(
+                        match: highlighted,
+                        onTap: () => _openMatch(highlighted))),
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                     child: Row(
                       children: const [
-                        Text('Próximos Jogos', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                        Text('Próximos Jogos',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16)),
                         Spacer(),
-                        Text('Ver todos', style: TextStyle(color: Colors.blueAccent)),
+                        Text('Ver todos',
+                            style: TextStyle(color: Colors.blueAccent)),
                       ],
                     ),
                   ),
