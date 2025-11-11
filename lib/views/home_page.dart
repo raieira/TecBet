@@ -89,10 +89,13 @@ class _HomePageState extends State<HomePage> {
           BetSlip(items: betItems, onOpen: _toggleAddToSlip),
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _toggleAddToSlip,
-        label: const Text('Adicionar ao cupom'),
-        icon: const Icon(Icons.add),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(117),
+        child: FloatingActionButton.extended(
+          onPressed: _toggleAddToSlip,
+          label: const Text('Adicionar ao cupom'),
+          icon: const Icon(Icons.add),
+        ),
       ),
     );
   }

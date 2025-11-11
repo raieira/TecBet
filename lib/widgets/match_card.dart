@@ -19,7 +19,9 @@ class MatchCard extends StatelessWidget {
           children: [
             Expanded(child: Text('${match.home}  x  ${match.away}', style: const TextStyle(fontWeight: FontWeight.w600))),
             if (match.live)
+            
               Container(
+                
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(color: Colors.redAccent, borderRadius: BorderRadius.circular(6)),
                 child: const Text('AO VIVO', style: TextStyle(color: Colors.white, fontSize: 12)),
@@ -44,8 +46,10 @@ class MatchCard extends StatelessWidget {
   static Widget _oddsBox(double odd) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-      decoration: BoxDecoration(border: Border.all(color: Colors.grey.shade300), borderRadius: BorderRadius.circular(6)),
-      child: Text(odd.toStringAsFixed(2), style: const TextStyle(fontWeight: FontWeight.bold)),
+      decoration: BoxDecoration(color: const Color.fromARGB(255, 255, 255, 255),   border: Border.all(color: const Color.fromARGB(255, 143, 38, 38)), borderRadius: BorderRadius.circular(6)),
+      child:
+       Text(odd.toStringAsFixed(2), style: const TextStyle(fontWeight: FontWeight.bold)),
+      
     );
   }
 
