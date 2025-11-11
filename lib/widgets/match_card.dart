@@ -4,8 +4,10 @@ import '../models/match_model.dart';
 class MatchCard extends StatelessWidget {
   final MatchModel match;
   final VoidCallback onTap;
-  final Function(double, String) onOddToggle; // ✅ callback para alternar seleção
-  final bool Function(double, String) isOddSelected; // ✅ saber se está selecionada
+  final Function(double, String)
+      onOddToggle; // ✅ callback para alternar seleção
+  final bool Function(double, String)
+      isOddSelected; // ✅ saber se está selecionada
 
   const MatchCard({
     super.key,
@@ -79,7 +81,9 @@ class MatchCard extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
         decoration: BoxDecoration(
-          color: selected ? Colors.orange.shade400 : Colors.white, // 🟧 cor selecionada
+          color: selected
+              ? Colors.orange.shade400
+              : Colors.white, // 🟧 cor selecionada
           border: Border.all(
             color: selected ? Colors.orange : Colors.grey.shade300,
             width: 2,

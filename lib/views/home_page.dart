@@ -63,9 +63,7 @@ class _HomePageState extends State<HomePage> {
   bool _isOddSelected(double odd, String tipo, MatchModel match) {
     return selectedOdds.any(
       (item) =>
-          item['odd'] == odd &&
-          item['tipo'] == tipo &&
-          item['match'] == match,
+          item['odd'] == odd && item['tipo'] == tipo && item['match'] == match,
     );
   }
 
@@ -80,7 +78,8 @@ class _HomePageState extends State<HomePage> {
         elevation: 1,
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none)),
+          IconButton(
+              onPressed: () {}, icon: const Icon(Icons.notifications_none)),
           const SizedBox(width: 8),
         ],
       ),
@@ -138,11 +137,6 @@ class _HomePageState extends State<HomePage> {
             onOpen: _toggleAddToSlip,
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _toggleAddToSlip,
-        label: const Text('Adicionar ao cupom'),
-        icon: const Icon(Icons.add),
       ),
     );
   }

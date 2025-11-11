@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
           color: Colors.white,
           elevation: 0,
           iconTheme: IconThemeData(color: Colors.black87),
-          titleTextStyle: TextStyle(color: Colors.black87, fontSize: 18, fontWeight: FontWeight.w600),
+          titleTextStyle: TextStyle(
+              color: Colors.black87, fontSize: 18, fontWeight: FontWeight.w600),
         ),
       ),
       initialRoute: '/',
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (settings) {
         if (settings.name == '/detail' && settings.arguments is MatchModel) {
           final match = settings.arguments as MatchModel;
-          return MaterialPageRoute(builder: (_) => MatchDetailPage(match: match));
+          return MaterialPageRoute(
+              builder: (_) => MatchDetailPage(match: match));
         }
         return null;
       },

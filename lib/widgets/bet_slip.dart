@@ -20,17 +20,23 @@ class BetSlip extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.indigo,
             borderRadius: BorderRadius.circular(12),
-            boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 10, offset: Offset(0,4))],
+            boxShadow: const [
+              BoxShadow(
+                  color: Colors.black26, blurRadius: 10, offset: Offset(0, 4))
+            ],
           ),
           child: Row(
             children: [
               const Icon(Icons.receipt_long, color: Colors.white),
               const SizedBox(width: 12),
-              Text('Cupom (${items})', style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+              Text('Cupom (${items})',
+                  style: const TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold)),
               const Spacer(),
               ElevatedButton(
                 onPressed: () {},
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.orangeAccent),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orangeAccent),
                 child: const Text('APOSTAR'),
               )
             ],
