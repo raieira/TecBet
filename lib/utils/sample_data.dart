@@ -12,6 +12,7 @@ final List<MatchModel> sampleMatches = [
     live: false,
   ),
   MatchModel(
+  
     id: 'm2',
     home: 'Corinthians',
     away: 'São Paulo',

@@ -21,7 +21,10 @@ class HighlightMatch extends StatelessWidget {
             end: Alignment.bottomRight,
           ),
           borderRadius: BorderRadius.circular(12),
-          boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0,4))],
+          boxShadow: const [
+            BoxShadow(
+                color: Colors.black12, blurRadius: 8, offset: Offset(0, 4))
+          ],
         ),
         child: Row(
           children: [
@@ -30,9 +33,13 @@ class HighlightMatch extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('${match.home}  x  ${match.away}',
-                      style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold)),
                   const SizedBox(height: 6),
-                  Text('Início: ${_formatDate(match.date)}', style: const TextStyle(color: Colors.white70)),
+                  Text('Início: ${_formatDate(match.date)}',
+                      style: const TextStyle(color: Colors.white70)),
                 ],
               ),
             ),
@@ -40,7 +47,9 @@ class HighlightMatch extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(match.live ? 'AO VIVO' : 'AO VIVO', // leave for style
-                    style: TextStyle(color: match.live ? Colors.redAccent : Colors.white70, fontWeight: FontWeight.bold)),
+                    style: TextStyle(
+                        color: match.live ? Colors.redAccent : Colors.white70,
+                        fontWeight: FontWeight.bold)),
                 const SizedBox(height: 8),
                 Row(
                   children: [
@@ -62,12 +71,15 @@ class HighlightMatch extends StatelessWidget {
   static Widget _oddsChip(String text) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-      decoration: BoxDecoration(color: Colors.white24, borderRadius: BorderRadius.circular(8)),
-      child: Text(text, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+      decoration: BoxDecoration(
+          color: Colors.white24, borderRadius: BorderRadius.circular(8)),
+      child: Text(text,
+          style: const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold)),
     );
   }
 
   static String _formatDate(DateTime dt) {
-    return '${dt.day.toString().padLeft(2,'0')}/${dt.month.toString().padLeft(2,'0')} ${dt.hour.toString().padLeft(2,'0')}:${dt.minute.toString().padLeft(2,'0')}';
+    return '${dt.day.toString().padLeft(2, '0')}/${dt.month.toString().padLeft(2, '0')} ${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}';
   }
 }
