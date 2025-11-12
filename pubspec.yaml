@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  carousel_slider: ^5.0.0
   http: ^1.2.0
   shared_preferences: ^2.3.0
   intl: ^0.19.0
@@ -20,3 +21,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - lib/assets/banner1.png
+    - lib/assets/banner2.png
+    - lib/assets/banner3.png
+    - lib/assets/logo.png
+
+   
+
