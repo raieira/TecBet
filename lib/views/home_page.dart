@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'apostas_page.dart'; // 👈 importa a tela de apostas
+
+// IMPORTANTE: tela de bilhete
+import 'bilhete_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -41,16 +43,17 @@ class _HomeScreenState extends State<HomeScreen> {
     },
   ];
 
+  // 🔥 Navegação usando bottom navigation
   void _onNavTap(int index) {
     setState(() {
       _selectedIndex = index;
     });
 
-    // 👇 Ao clicar em "Apostas"
-    if (index == 4) {
+    // 👉 Botão BILHETE (ícone de recibo / posição 2)
+    if (index == 2) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const ApostasPage()),
+        MaterialPageRoute(builder: (context) => const BilhetePage()),
       );
     }
   }
@@ -73,14 +76,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 const Icon(Icons.card_giftcard, color: Colors.red, size: 22),
                 const SizedBox(width: 12),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
                     color: Colors.red,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: const Text(
                     'R\$ 108,43',
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
@@ -88,16 +93,19 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // Banners
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: CarouselSlider(
                 items: banners
                     .map((b) => ClipRRect(
                           borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(b, fit: BoxFit.cover, width: double.infinity),
+                          child: Image.asset(b,
+                              fit: BoxFit.cover, width: double.infinity),
                         ))
                     .toList(),
                 options: CarouselOptions(
@@ -108,6 +116,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
+
+            // Esportes
             SizedBox(
               height: 80,
               child: ListView.builder(
@@ -127,7 +137,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         const SizedBox(height: 5),
                         Text(
                           sport['name'],
-                          style: const TextStyle(color: Colors.white, fontSize: 12),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 12),
                         ),
                       ],
                     ),
@@ -135,10 +146,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
+
+            // Lista de jogos
             Column(
               children: matches.map((match) {
                 return Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: const Color(0xFF1A1A1A),
@@ -148,14 +162,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(match['league'],
-                          style: const TextStyle(color: Colors.grey, fontSize: 12)),
+                          style: const TextStyle(
+                              color: Colors.grey, fontSize: 12)),
                       const SizedBox(height: 5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
                             child: Text(match['home'],
-                                style: const TextStyle(color: Colors.white)),
+                                style:
+                                    const TextStyle(color: Colors.white)),
                           ),
                           _buildOddBox(match['odds']['home']),
                         ],
@@ -164,7 +180,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text('Empate', style: TextStyle(color: Colors.white)),
+                          const Text('Empate',
+                              style: TextStyle(color: Colors.white)),
                           _buildOddBox(match['odds']['draw']),
                         ],
                       ),
@@ -174,7 +191,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Expanded(
                             child: Text(match['away'],
-                                style: const TextStyle(color: Colors.white)),
+                                style:
+                                    const TextStyle(color: Colors.white)),
                           ),
                           _buildOddBox(match['odds']['away']),
                         ],
@@ -187,6 +205,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+
+      // Barra inferior
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color(0xFF1A1A1A),
         selectedItemColor: Colors.red,
@@ -205,6 +225,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  // Caixa de odd
   Widget _buildOddBox(double odd) {
     return Container(
       margin: const EdgeInsets.only(left: 10),
@@ -215,7 +236,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: Text(
         odd.toStringAsFixed(2),
-        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        style: const TextStyle(
+            color: Colors.white, fontWeight: FontWeight.bold),
       ),
     );
   }
