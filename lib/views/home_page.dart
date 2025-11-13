@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'apostas_page.dart'; // 👈 importa a tela de apostas
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -44,6 +45,14 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _selectedIndex = index;
     });
+
+    // 👇 Ao clicar em "Apostas"
+    if (index == 4) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const ApostasPage()),
+      );
+    }
   }
 
   @override
@@ -82,7 +91,6 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Banners
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: CarouselSlider(
@@ -100,8 +108,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-
-            // Menu de esportes
             SizedBox(
               height: 80,
               child: ListView.builder(
@@ -129,8 +135,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-
-            // Lista de jogos
             Column(
               children: matches.map((match) {
                 return Container(
@@ -183,8 +187,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-
-      // Barra inferior
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color(0xFF1A1A1A),
         selectedItemColor: Colors.red,
