@@ -23,7 +23,7 @@ class _ApostasPageState extends State<ApostasPage> {
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back,color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text("Apostas", style: TextStyle(fontWeight: FontWeight.bold)),
