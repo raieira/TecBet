@@ -89,14 +89,14 @@ class _ApostasPageState extends State<ApostasPage> {
       void Function(String?) onChanged) {
     return DropdownButtonFormField<String>(
       dropdownColor: Colors.black,
-      value: value,
+      initialValue: value,
       decoration: InputDecoration(
         labelText: label,
         labelStyle: const TextStyle(color: Colors.white),
         enabledBorder:
             OutlineInputBorder(borderSide: BorderSide(color: Colors.red.shade700)),
         focusedBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+            const OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
       ),
       items: items
           .map((e) =>
@@ -115,7 +115,7 @@ class _ApostasPageState extends State<ApostasPage> {
         enabledBorder:
             OutlineInputBorder(borderSide: BorderSide(color: Colors.red.shade700)),
         focusedBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+            const OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
       ),
     );
   }
@@ -148,7 +148,7 @@ class _ApostasPageState extends State<ApostasPage> {
           enabledBorder:
               OutlineInputBorder(borderSide: BorderSide(color: Colors.red.shade700)),
           focusedBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+              const OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -215,8 +215,8 @@ class _ApostasPageState extends State<ApostasPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(cod, style: const TextStyle(color: Colors.white)),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Icon(Icons.delete, color: Colors.red, size: 20),
                   SizedBox(width: 6),
                   Icon(Icons.visibility, color: Colors.green, size: 20),

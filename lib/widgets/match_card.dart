@@ -92,6 +92,7 @@ class MatchCard extends StatelessWidget {
           boxShadow: selected
               ? [
                   BoxShadow(
+                    // ignore: deprecated_member_use
                     color: Colors.orange.withOpacity(0.3),
                     blurRadius: 4,
                     offset: const Offset(0, 2),
