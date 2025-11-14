@@ -84,7 +84,7 @@ class HomeContent extends StatelessWidget {
             const SizedBox(height: 10),
 
             /// LOGO
-            Image.asset("assets/logo.png", height: 60),
+            Image.asset("lib/assets/logo.png", height: 60),
 
             const SizedBox(height: 20),
 
@@ -93,8 +93,9 @@ class HomeContent extends StatelessWidget {
               height: 150,
               child: PageView(
                 children: [
-                  Image.asset("assets/banner2.png", fit: BoxFit.cover),
-                  Image.asset("assets/banner3.png", fit: BoxFit.cover),
+                  Image.asset("lib/assets/banner1.png", fit: BoxFit.cover),
+                  Image.asset("lib/assets/banner2.png", fit: BoxFit.cover),
+                  Image.asset("lib/assets/banner3.png", fit: BoxFit.cover),
                 ],
               ),
             ),

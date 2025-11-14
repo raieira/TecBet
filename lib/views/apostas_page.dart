@@ -22,11 +22,8 @@ class _ApostasPageState extends State<ApostasPage> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back,color: Colors.white),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Text("Apostas", style: TextStyle(fontWeight: FontWeight.bold)),
+        
+        title: const Text("APOSTAS", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
