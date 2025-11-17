@@ -3,6 +3,7 @@ import 'package:tecbet/views/bilhete_page.dart';
 import 'package:tecbet/views/live_page.dart';
 import 'package:tecbet/views/validar_page.dart';
 import 'package:tecbet/views/apostas_page.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,11 +16,11 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
 
   final List<Widget> pages = [
-    const HomeContent(),   
-    const LivePage(),      
-    const BilhetePage(),   
-    const ValidarPage(),  
-    const ApostasPage(),   
+    const HomeContent(),
+    const LivePage(),
+    const BilhetePage(),
+    const ValidarPage(),
+    const ApostasPage(),
   ];
 
   @override
@@ -65,7 +66,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});
 
@@ -94,7 +94,7 @@ class HomeContent extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: const Text(
-                    'R\$ 108,43',
+                    'R\$ 1.480,43',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -112,12 +112,24 @@ class HomeContent extends StatelessWidget {
             children: [
               SizedBox(
                 height: 150,
-                child: PageView(
-                  children: [
-                    Image.asset("lib/assets/banner1.png", fit: BoxFit.cover),
-                    Image.asset("lib/assets/banner2.png", fit: BoxFit.cover),
-                    Image.asset("lib/assets/banner3.png", fit: BoxFit.cover),
-                  ],
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                    height: 400.0,
+                    enlargeCenterPage: true,
+                    autoPlay: true,
+                  ),
+                  items: [1, 2, 3].map((i) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: Image.asset(
+                            "lib/assets/banner$i.png",
+                          ),
+                        );
+                      },
+                    );
+                  }).toList(),
                 ),
               ),
               const SizedBox(height: 20),
@@ -150,7 +162,6 @@ class HomeContent extends StatelessWidget {
     );
   }
 
- 
   Widget sectionTitle(String title) {
     return Container(
       width: double.infinity,
@@ -167,7 +178,6 @@ class HomeContent extends StatelessWidget {
     );
   }
 
- 
   Widget _buildMatchCard({
     required String country,
     required String teamA,
@@ -227,7 +237,6 @@ class HomeContent extends StatelessWidget {
     );
   }
 
-  
   Widget _odds(String title, String value) {
     return Column(
       children: [
