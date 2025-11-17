@@ -27,7 +27,6 @@ flutter:
     - lib/assets/banner2.png
     - lib/assets/banner3.png
     - lib/assets/logo.png
-    
-carousel_slider: ^5.1.1
+
    
 
