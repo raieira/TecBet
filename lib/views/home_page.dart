@@ -15,33 +15,29 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
 
   final List<Widget> pages = [
-    const HomeContent(),   
-    const LivePage(),      
-    const BilhetePage(),   
-    const ValidarPage(), 
-    const ApostasPage(),  
+    const HomeContent(),   // página principal
+    const LivePage(),      // ao vivo
+    const BilhetePage(),   // bilhete
+    const ValidarPage(),   // validar
+    const ApostasPage(),   // apostas
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF1A1A1A),
-
       body: pages[currentIndex],
-
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color(0xFF1A1A1A),
         selectedItemColor: Colors.red,
         unselectedItemColor: Colors.white70,
         currentIndex: currentIndex,
         type: BottomNavigationBarType.fixed,
-
         onTap: (index) {
           setState(() {
             currentIndex = index;
           });
         },
-
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -77,7 +73,6 @@ class HomeContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF0D0D0D),
-
       appBar: AppBar(
         backgroundColor: const Color(0xFF000000),
         elevation: 0,
@@ -111,12 +106,11 @@ class HomeContent extends StatelessWidget {
           ],
         ),
       ),
-
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-               SizedBox(
+              SizedBox(
                 height: 150,
                 child: PageView(
                   children: [
@@ -126,11 +120,8 @@ class HomeContent extends StatelessWidget {
                   ],
                 ),
               ),
-
               const SizedBox(height: 20),
-
               sectionTitle("Futebol"),
-
               _buildMatchCard(
                 country: "BRASIL: SÉRIE A",
                 teamA: "FLAMENGO",
@@ -140,11 +131,8 @@ class HomeContent extends StatelessWidget {
                 oddDraw: "3.20",
                 oddAway: "3.30",
               ),
-
               const SizedBox(height: 20),
-
               sectionTitle("Basquete"),
-
               _buildMatchCard(
                 country: "NBA",
                 teamA: "LAKERS",
@@ -154,7 +142,6 @@ class HomeContent extends StatelessWidget {
                 oddDraw: null,
                 oddAway: "2.10",
               ),
-
               const SizedBox(height: 40),
             ],
           ),
@@ -210,26 +197,22 @@ class HomeContent extends StatelessWidget {
               ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.all(12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(teamA,
-                    style:
-                        const TextStyle(color: Colors.white, fontSize: 16)),
+                    style: const TextStyle(color: Colors.white, fontSize: 16)),
                 const SizedBox(height: 5),
                 Text(teamB,
-                    style:
-                        const TextStyle(color: Colors.white, fontSize: 16)),
+                    style: const TextStyle(color: Colors.white, fontSize: 16)),
                 const SizedBox(height: 8),
                 Text(time, style: const TextStyle(color: Colors.white54)),
                 const SizedBox(height: 12),
               ],
             ),
           ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -238,7 +221,6 @@ class HomeContent extends StatelessWidget {
               if (oddAway != null) _odds("Fora", oddAway),
             ],
           ),
-
           const SizedBox(height: 12),
         ],
       ),
@@ -252,8 +234,7 @@ class HomeContent extends StatelessWidget {
         Text(title, style: const TextStyle(color: Colors.white)),
         const SizedBox(height: 5),
         Container(
-          padding:
-              const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
           decoration: BoxDecoration(
             color: Colors.black,
             borderRadius: BorderRadius.circular(5),
