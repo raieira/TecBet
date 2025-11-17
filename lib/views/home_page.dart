@@ -15,11 +15,11 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
 
   final List<Widget> pages = [
-    const HomeContent(),   // página principal
-    const LivePage(),      // ao vivo
-    const BilhetePage(),   // bilhete
-    const ValidarPage(),   // validar
-    const ApostasPage(),   // apostas
+    const HomeContent(),   
+    const LivePage(),      
+    const BilhetePage(),   
+    const ValidarPage(),  
+    const ApostasPage(),   
   ];
 
   @override
