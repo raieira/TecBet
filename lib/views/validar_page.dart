@@ -18,27 +18,23 @@ class _ValidarPageState extends State<ValidarPage> {
     return Scaffold(
       backgroundColor: const Color(0xFF0D0D0D),
       appBar: AppBar(
-        
         title: const Text(
           "VALIDAR BILHETE",
-          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         ),
         centerTitle: false,
       ),
-
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             const Text(
               "Digite o código do Bilhete",
               style: TextStyle(color: Colors.white70, fontSize: 16),
             ),
             const SizedBox(height: 12),
-
-            // Campo do código
             TextField(
               controller: codigoController,
               style: const TextStyle(color: Colors.white),
@@ -56,10 +52,7 @@ class _ValidarPageState extends State<ValidarPage> {
                 ),
               ),
             ),
-
             const SizedBox(height: 20),
-
-            // Botão validar
             SizedBox(
               width: double.infinity,
               height: 50,
@@ -86,9 +79,7 @@ class _ValidarPageState extends State<ValidarPage> {
                 ),
               ),
             ),
-
             const SizedBox(height: 30),
-
             if (temResultado)
               Container(
                 padding: const EdgeInsets.all(16),
@@ -115,11 +106,9 @@ class _ValidarPageState extends State<ValidarPage> {
                     const SizedBox(height: 20),
                     const Divider(color: Colors.white12),
                     const SizedBox(height: 10),
-
-                    // EXEMPLO DE DADOS DO BILHETE (só visual)
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text("Status:",
                             style: TextStyle(color: Colors.white70)),
                         Text("Aguardando",
@@ -128,11 +117,10 @@ class _ValidarPageState extends State<ValidarPage> {
                                 fontWeight: FontWeight.bold)),
                       ],
                     ),
-
                     const SizedBox(height: 8),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text("Valor Apostado:",
                             style: TextStyle(color: Colors.white70)),
                         Text("R\$ 20,00",
@@ -141,11 +129,10 @@ class _ValidarPageState extends State<ValidarPage> {
                                 fontWeight: FontWeight.bold)),
                       ],
                     ),
-
                     const SizedBox(height: 8),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text("Possível ganho:",
                             style: TextStyle(color: Colors.white70)),
                         Text("R\$ 85,40",

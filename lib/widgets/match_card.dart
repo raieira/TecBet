@@ -5,9 +5,9 @@ class MatchCard extends StatelessWidget {
   final MatchModel match;
   final VoidCallback onTap;
   final Function(double, String)
-      onOddToggle; // ✅ callback para alternar seleção
+      onOddToggle; 
   final bool Function(double, String)
-      isOddSelected; // ✅ saber se está selecionada
+      isOddSelected;
 
   const MatchCard({
     super.key,
@@ -83,7 +83,7 @@ class MatchCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: selected
               ? Colors.orange.shade400
-              : Colors.white, // 🟧 cor selecionada
+              : Colors.white, 
           border: Border.all(
             color: selected ? Colors.orange : Colors.grey.shade300,
             width: 2,

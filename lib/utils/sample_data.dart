@@ -32,4 +32,13 @@ final List<MatchModel> sampleMatches = [
     date: DateTime.now().add(const Duration(days: 1)),
     live: false,
   ),
+  MatchModel(
+    id: 'm4', 
+    home: 'Sete de Setembro', 
+    away: 'AGA', 
+    homeOdds: 1.90, 
+    drawOdds: 2.00, 
+    awayOdds: 1.50, 
+    date: DateTime.now().add(const Duration(hours: 4)),
+    live: false)
 ];

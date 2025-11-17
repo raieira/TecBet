@@ -15,11 +15,11 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
 
   final List<Widget> pages = [
-    const HomeContent(),   // página principal
-    const LivePage(),      // ao vivo
-    const BilhetePage(),   // bilhete
-    const ValidarPage(),   // validar
-    const ApostasPage(),   // apostas
+    const HomeContent(),   
+    const LivePage(),      
+    const BilhetePage(),   
+    const ValidarPage(), 
+    const ApostasPage(),  
   ];
 
   @override
@@ -69,9 +69,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-/// ---------------------------------------------------------------------
-///                   HOME – INTERFACE PRINCIPAL
-/// ---------------------------------------------------------------------
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});
@@ -166,7 +163,7 @@ class HomeContent extends StatelessWidget {
     );
   }
 
-  // Título de seção
+ 
   Widget sectionTitle(String title) {
     return Container(
       width: double.infinity,
@@ -183,7 +180,7 @@ class HomeContent extends StatelessWidget {
     );
   }
 
-  // Card de partida
+ 
   Widget _buildMatchCard({
     required String country,
     required String teamA,
@@ -248,7 +245,7 @@ class HomeContent extends StatelessWidget {
     );
   }
 
-  // Botões de odds
+  
   Widget _odds(String title, String value) {
     return Column(
       children: [
