@@ -27,6 +27,10 @@ flutter:
     - lib/assets/banner2.png
     - lib/assets/banner3.png
     - lib/assets/logo.png
+    - lib/assets/palmeiras.png
+    - lib/assets/celtics.png
+    - lib/assets/lakers.jpg
+    - lib/assets/flamengo.jpg
     
 carousel_slider: ^5.1.1
    

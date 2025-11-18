@@ -4,6 +4,8 @@ import 'package:tecbet/views/live_page.dart';
 import 'package:tecbet/views/validar_page.dart';
 import 'package:tecbet/views/apostas_page.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tecbet/views/login_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -80,15 +82,16 @@ class HomeContent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset('lib/assets/logo.png', height: 100),
+
             Row(
               children: [
                 const Icon(Icons.flag, color: Colors.greenAccent, size: 20),
                 const SizedBox(width: 6),
                 const Icon(Icons.card_giftcard, color: Colors.red, size: 22),
                 const SizedBox(width: 12),
+
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
                     color: Colors.red,
                     borderRadius: BorderRadius.circular(12),
@@ -101,11 +104,34 @@ class HomeContent extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                const SizedBox(width: 18),
+
+                /// -----------------------------
+                ///        BOTÃO DE LOGOUT
+                /// -----------------------------
+                GestureDetector(
+                  onTap: () async {
+                    final prefs = await SharedPreferences.getInstance();
+                    await prefs.remove("logado");
+
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (_) => const LoginPage()),
+                    );
+                  },
+                  child: const Icon(
+                    Icons.logout,
+                    color: Colors.white,
+                    size: 28,
+                  ),
+                ),
               ],
             ),
           ],
         ),
       ),
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -121,19 +147,19 @@ class HomeContent extends StatelessWidget {
                   items: [1, 2, 3].map((i) {
                     return Builder(
                       builder: (BuildContext context) {
-                        return Container(
+                        return SizedBox(
                           width: MediaQuery.of(context).size.width,
-                          child: Image.asset(
-                            "lib/assets/banner$i.png",
-                          ),
+                          child: Image.asset("lib/assets/banner$i.png"),
                         );
                       },
                     );
                   }).toList(),
                 ),
               ),
+
               const SizedBox(height: 20),
               sectionTitle("Futebol"),
+
               _buildMatchCard(
                 country: "BRASIL: SÉRIE A",
                 teamA: "FLAMENGO",
@@ -142,9 +168,13 @@ class HomeContent extends StatelessWidget {
                 oddHome: "2.10",
                 oddDraw: "3.20",
                 oddAway: "3.30",
+                teamAImg: "lib/assets/flamengo.jpg",
+                teamBImg: "lib/assets/palmeiras.png",
               ),
+
               const SizedBox(height: 20),
               sectionTitle("Basquete"),
+
               _buildMatchCard(
                 country: "NBA",
                 teamA: "LAKERS",
@@ -153,7 +183,10 @@ class HomeContent extends StatelessWidget {
                 oddHome: "1.80",
                 oddDraw: null,
                 oddAway: "2.10",
+                teamAImg: "lib/assets/lakers.jpg",
+                teamBImg: "lib/assets/celtics.png",
               ),
+
               const SizedBox(height: 40),
             ],
           ),
@@ -186,6 +219,8 @@ class HomeContent extends StatelessWidget {
     required String? oddHome,
     required String? oddDraw,
     required String? oddAway,
+    required String teamAImg,
+    required String teamBImg,
   }) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
@@ -207,22 +242,42 @@ class HomeContent extends StatelessWidget {
               ),
             ),
           ),
+
           Padding(
             padding: const EdgeInsets.all(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
               children: [
-                Text(teamA,
-                    style: const TextStyle(color: Colors.white, fontSize: 16)),
-                const SizedBox(height: 5),
-                Text(teamB,
-                    style: const TextStyle(color: Colors.white, fontSize: 16)),
-                const SizedBox(height: 8),
-                Text(time, style: const TextStyle(color: Colors.white54)),
-                const SizedBox(height: 12),
+                Image.asset(teamAImg, height: 32, width: 32),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(teamA,
+                      style: const TextStyle(color: Colors.white, fontSize: 16)),
+                ),
               ],
             ),
           ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Row(
+              children: [
+                Image.asset(teamBImg, height: 32, width: 32),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(teamB,
+                      style: const TextStyle(color: Colors.white, fontSize: 16)),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 8),
+
+          Padding(
+            padding: const EdgeInsets.only(left: 12, bottom: 12),
+            child: Text(time, style: const TextStyle(color: Colors.white54)),
+          ),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -231,6 +286,7 @@ class HomeContent extends StatelessWidget {
               if (oddAway != null) _odds("Fora", oddAway),
             ],
           ),
+
           const SizedBox(height: 12),
         ],
       ),
