@@ -1,6 +1,6 @@
 class MatchModel {
   final String id;
-  final String home;
+  final String matches;
   final String away;
   final double homeOdds;
   final double drawOdds;
@@ -10,7 +10,7 @@ class MatchModel {
 
   MatchModel({
     required this.id,
-    required this.home,
+    required this.matches,
     required this.away,
     required this.homeOdds,
     required this.drawOdds,
@@ -19,3 +19,4 @@ class MatchModel {
     this.live = false,
   });
 }
+

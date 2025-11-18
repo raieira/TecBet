@@ -10,7 +10,7 @@ class MatchDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${match.home} x ${match.away}'),
+        title: Text('${match.matches} x ${match.away}'),
         backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.black87),
       ),
@@ -19,7 +19,7 @@ class MatchDetailPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('${match.home}  x  ${match.away}',
+            Text('${match.matches}  x  ${match.away}',
                 style:
                     const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
@@ -28,7 +28,7 @@ class MatchDetailPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _betOption('${match.home}', match.homeOdds),
+                _betOption('${match.matches}', match.homeOdds),
                 _betOption('Empate', match.drawOdds),
                 _betOption('${match.away}', match.awayOdds),
               ],

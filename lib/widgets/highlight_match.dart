@@ -32,7 +32,7 @@ class HighlightMatch extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('${match.home}  x  ${match.away}',
+                  Text('${match.matches}  x  ${match.away}',
                       style: const TextStyle(
                           color: Colors.white,
                           fontSize: 18,

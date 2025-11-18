@@ -29,7 +29,7 @@ class MatchCard extends StatelessWidget {
           children: [
             Expanded(
               child: Text(
-                '${match.home}  x  ${match.away}',
+                '${match.matches}  x  ${match.away}',
                 style: const TextStyle(fontWeight: FontWeight.w600),
               ),
             ),

@@ -3,7 +3,7 @@ import '../models/match_model.dart';
 final List<MatchModel> sampleMatches = [
   MatchModel(
     id: 'm1',
-    home: 'Flamengo',
+    matches: 'Flamengo',
     away: 'Palmeiras',
     homeOdds: 2.10,
     drawOdds: 3.40,
@@ -14,7 +14,7 @@ final List<MatchModel> sampleMatches = [
   MatchModel(
   
     id: 'm2',
-    home: 'Corinthians',
+    matches: 'Corinthians',
     away: 'São Paulo',
     homeOdds: 1.95,
     drawOdds: 3.50,
@@ -24,7 +24,7 @@ final List<MatchModel> sampleMatches = [
   ),
   MatchModel(
     id: 'm3',
-    home: 'Vasco',
+    matches: 'Vasco',
     away: 'Botafogo',
     homeOdds: 2.50,
     drawOdds: 3.10,
@@ -34,7 +34,7 @@ final List<MatchModel> sampleMatches = [
   ),
   MatchModel(
     id: 'm4', 
-    home: 'Sete de Setembro', 
+    matches: 'Sete de Setembro', 
     away: 'AGA', 
     homeOdds: 1.90, 
     drawOdds: 2.00, 
