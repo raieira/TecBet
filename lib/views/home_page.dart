@@ -82,16 +82,15 @@ class HomeContent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset('lib/assets/logo.png', height: 100),
-
             Row(
               children: [
                 const Icon(Icons.flag, color: Colors.greenAccent, size: 20),
                 const SizedBox(width: 6),
                 const Icon(Icons.card_giftcard, color: Colors.red, size: 22),
                 const SizedBox(width: 12),
-
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
                     color: Colors.red,
                     borderRadius: BorderRadius.circular(12),
@@ -104,12 +103,7 @@ class HomeContent extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 const SizedBox(width: 18),
-
-                /// -----------------------------
-                ///        BOTÃO DE LOGOUT
-                /// -----------------------------
                 GestureDetector(
                   onTap: () async {
                     final prefs = await SharedPreferences.getInstance();
@@ -131,7 +125,6 @@ class HomeContent extends StatelessWidget {
           ],
         ),
       ),
-
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -156,10 +149,8 @@ class HomeContent extends StatelessWidget {
                   }).toList(),
                 ),
               ),
-
               const SizedBox(height: 20),
               sectionTitle("Futebol"),
-
               _buildMatchCard(
                 country: "BRASIL: SÉRIE A",
                 teamA: "FLAMENGO",
@@ -171,10 +162,8 @@ class HomeContent extends StatelessWidget {
                 teamAImg: "lib/assets/flamengo.jpg",
                 teamBImg: "lib/assets/palmeiras.png",
               ),
-
               const SizedBox(height: 20),
               sectionTitle("Basquete"),
-
               _buildMatchCard(
                 country: "NBA",
                 teamA: "LAKERS",
@@ -186,7 +175,6 @@ class HomeContent extends StatelessWidget {
                 teamAImg: "lib/assets/lakers.jpg",
                 teamBImg: "lib/assets/celtics.png",
               ),
-
               const SizedBox(height: 40),
             ],
           ),
@@ -242,7 +230,6 @@ class HomeContent extends StatelessWidget {
               ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.all(12),
             child: Row(
@@ -251,12 +238,12 @@ class HomeContent extends StatelessWidget {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(teamA,
-                      style: const TextStyle(color: Colors.white, fontSize: 16)),
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 16)),
                 ),
               ],
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Row(
@@ -265,19 +252,17 @@ class HomeContent extends StatelessWidget {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(teamB,
-                      style: const TextStyle(color: Colors.white, fontSize: 16)),
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 16)),
                 ),
               ],
             ),
           ),
-
           const SizedBox(height: 8),
-
           Padding(
             padding: const EdgeInsets.only(left: 12, bottom: 12),
             child: Text(time, style: const TextStyle(color: Colors.white54)),
           ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -286,7 +271,6 @@ class HomeContent extends StatelessWidget {
               if (oddAway != null) _odds("Fora", oddAway),
             ],
           ),
-
           const SizedBox(height: 12),
         ],
       ),
