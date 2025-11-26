@@ -8,7 +8,6 @@ class MatchModel {
   final competitionModel competition;
   final homeTeamModel homeTeam;
   final awayTeamModel awayTeam;
-  
 
   MatchModel({
     required this.id,
@@ -18,13 +17,13 @@ class MatchModel {
     required this.homeTeam,
   });
 
-
-static MatchModel fromJson(Map<String,dynamic>json) {
-  return MatchModel(
-    awayTeam: json['awayTeam'],
-    competition: json[ 'competition'],
-    homeTeam: json['homeTeam'],
-    id: json['id'],
-    matches: json['matches'],);
-}
+  static MatchModel fromJson(Map<String, dynamic> json) {
+    return MatchModel(
+      awayTeam: awayTeamModel.fromJson(json['awayTeam']),
+      competition: json['competition'],
+      homeTeam: json['homeTeam'],
+      id: json['id'],
+      matches: json['matches'],
+    );
+  }
 }

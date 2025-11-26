@@ -14,8 +14,10 @@ void main() async {
   runApp(MyApp(
       logado: logado,
       matchesController: const MatchesController(
-          repository:
-              MatchRepository(baseUrl: 'https://api.football-data.org/v4'))));
+          repository: MatchRepository(
+        baseUrl: 'https://api.football-data.org/v4',
+        token: '8bf39c1b2fc040c09ba3ba3c4ecc89b6',
+      ))));
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +34,9 @@ class MyApp extends StatelessWidget {
           ? HomePage(
               matchesController: matchesController,
             )
-          :  LoginPage(matchesController: matchesController,),
+          : LoginPage(
+              matchesController: matchesController,
+            ),
     );
   }
 }

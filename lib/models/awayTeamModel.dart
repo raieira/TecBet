@@ -5,11 +5,17 @@ class awayTeamModel {
   final String tla;
   final String crest;
 
-  awayTeamModel ({
+  awayTeamModel({
     required this.id,
     required this.name,
     required this.shortName,
     required this.tla,
     required this.crest,
   });
+
+  static fromJson(Map<String, dynamic> json) {
+    return awayTeamModel(
+      id: json['id'],
+    );
+  }
 }
