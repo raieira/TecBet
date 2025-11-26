@@ -1,13 +1,12 @@
-/*import 'package:flutter/material.dart';
+/*
+import 'package:flutter/material.dart';
 import '../models/match_model.dart';
 
 class MatchCard extends StatelessWidget {
   final MatchModel match;
   final VoidCallback onTap;
-  final Function(double, String)
-      onOddToggle; 
-  final bool Function(double, String)
-      isOddSelected;
+  final Function(double, String) onOddToggle;
+  final bool Function(double, String) isOddSelected;
 
   const MatchCard({
     super.key,
@@ -81,9 +80,7 @@ class MatchCard extends StatelessWidget {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
         decoration: BoxDecoration(
-          color: selected
-              ? Colors.orange.shade400
-              : Colors.white, 
+          color: selected ? Colors.orange.shade400 : Colors.white,
           border: Border.all(
             color: selected ? Colors.orange : Colors.grey.shade300,
             width: 2,
