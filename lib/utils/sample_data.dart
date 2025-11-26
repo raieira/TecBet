@@ -4,13 +4,14 @@ import 'package:tecbet/models/homeTeamModel.dart';
 
 import '../models/match_model.dart';
 
-final List<MatchModel> sampleMatches = [
+/*final List<MatchModel> sampleMatches = [
   MatchModel(
     id: 'm1',
     matches: 'Flamengo',
-    awayTeam: awayTeamModel(id: id, name: name, shortName: shortName, tla: tla, crest: crest),
+    awayTeam: awayTeamModel(id: 13213, name: 'Flamengo', shortName: shortName, tla: tla, crest: crest),
     competition: competitionModel(id: id, code: code, flag: flag, name: name),
-    homeTeam: homeTeamModel(id: id, name: name, shortName: shortName, tla: tla, crest: crest),
+    homeTeam: homeTeamModel(),
   ),
  
 ];
+*/

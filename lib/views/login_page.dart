@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tecbet/controllers/matches_controller.dart';
 import 'package:tecbet/views/home_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final MatchesController matchesController;
+  const LoginPage({super.key, required this.matchesController});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -39,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
     // NAVEGAR PARA HOME
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (_) => const HomePage()),
+      MaterialPageRoute(builder: (_) => HomePage(matchesController: widget.matchesController,)),
     );
   }
 

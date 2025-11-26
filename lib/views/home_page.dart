@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tecbet/controllers/matches_controller.dart';
 import 'package:tecbet/views/bilhete_page.dart';
 import 'package:tecbet/views/live_page.dart';
 import 'package:tecbet/views/validar_page.dart';
@@ -8,7 +9,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tecbet/views/login_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final MatchesController matchesController;
+  
+  const HomePage({super.key, required this.matchesController});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -17,13 +20,19 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
 
-  final List<Widget> pages = [
-    const HomeContent(),
+  List<Widget> get pages => [
+     HomeContent(matchesController: widget.matchesController,),
     const LivePage(),
     const BilhetePage(),
     const ValidarPage(),
     const ApostasPage(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    widget.matchesController.getAllMatch();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +78,9 @@ class _HomePageState extends State<HomePage> {
 }
 
 class HomeContent extends StatelessWidget {
-  const HomeContent({super.key});
+  final MatchesController matchesController;
+
+  const HomeContent({super.key, required this.matchesController});
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +122,7 @@ class HomeContent extends StatelessWidget {
 
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (_) => const LoginPage()),
+                      MaterialPageRoute(builder: (_) =>  LoginPage(matchesController: matchesController,)),
                     );
                   },
                   child: const Icon(
