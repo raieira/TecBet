@@ -16,6 +16,10 @@ class awayTeamModel {
   static fromJson(Map<String, dynamic> json) {
     return awayTeamModel(
       id: json['id'],
+      name: json['name'],
+      shortName: json['shortName'],
+      tla: json['tla'],
+      crest: json['crest'],
     );
   }
 }

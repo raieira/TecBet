@@ -12,4 +12,14 @@ class homeTeamModel {
     required this.tla,
     required this.crest,
   });
+
+  static fromJson(Map<String, dynamic>json) {
+    return homeTeamModel(
+      id: json['id'],
+      name:  json['name'],
+      shortName: json['shortName'],
+      tla: json['tla'],
+      crest: json['crest'],
+    );
+  }
 }
