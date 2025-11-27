@@ -1,11 +1,11 @@
-class homeTeamModel {
+class HomeTeamModel {
   final int id;
   final String name;
   final String shortName;
   final String tla;
   final String crest;
 
-  homeTeamModel ({
+  HomeTeamModel ({
     required this.id,
     required this.name,
     required this.shortName,
@@ -14,7 +14,7 @@ class homeTeamModel {
   });
 
   static fromJson(Map<String, dynamic>json) {
-    return homeTeamModel(
+    return HomeTeamModel(
       id: json['id'],
       name:  json['name'],
       shortName: json['shortName'],

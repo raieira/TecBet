@@ -11,7 +11,7 @@ class MatchRepository {
 
   Future<List<MatchModel>> getAllMatch() async {
     final response = await http.get(
-      Uri.parse('$baseUrl/matches'),
+      Uri.parse('$baseUrl/competitions/BSA/matches'),
       headers: {'X-Auth-Token': token},
     );
 

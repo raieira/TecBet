@@ -1,8 +1,11 @@
+import 'package:tecbet/models/awayTeamModel.dart';
+import 'package:tecbet/models/homeTeamModel.dart';
+
 class MatchModel {
   final int id;
   final String matches; // vamos usar para o horário
-  final String homeTeam;
-  final String awayTeam;
+  final HomeTeamModel homeTeam;
+  final AwayTeamModel awayTeam;
   final String competition;
 
   MatchModel({
@@ -17,8 +20,8 @@ class MatchModel {
     return MatchModel(
       id: json["id"] ?? 0,
       matches: json["utcDate"] ?? "",
-      homeTeam: json["homeTeam"]["name"] ?? "",
-      awayTeam: json["awayTeam"]["name"] ?? "",
+      homeTeam: HomeTeamModel.fromJson(json["homeTeam"]),
+      awayTeam: AwayTeamModel.fromJson( json["awayTeam"]),
       competition: json["competition"]["name"] ?? "",
     );
   }

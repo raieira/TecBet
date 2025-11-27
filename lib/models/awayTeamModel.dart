@@ -1,11 +1,11 @@
-class awayTeamModel {
+class AwayTeamModel {
   final int id;
   final String name;
   final String shortName;
   final String tla;
   final String crest;
 
-  awayTeamModel({
+  AwayTeamModel({
     required this.id,
     required this.name,
     required this.shortName,
@@ -14,7 +14,7 @@ class awayTeamModel {
   });
 
   static fromJson(Map<String, dynamic> json) {
-    return awayTeamModel(
+    return AwayTeamModel(
       id: json['id'],
       name: json['name'],
       shortName: json['shortName'],

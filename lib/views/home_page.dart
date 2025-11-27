@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tecbet/controllers/matches_controller.dart';
+import 'package:tecbet/models/homeTeamModel.dart';
 import 'package:tecbet/views/bilhete_page.dart';
 import 'package:tecbet/views/live_page.dart';
 import 'package:tecbet/views/validar_page.dart';
@@ -160,14 +161,14 @@ class HomeContent extends StatelessWidget {
 
                 return _buildMatchCard(
                   country: match.competition,
-                  teamA: match.homeTeam,
-                  teamB: match.awayTeam,
+                  teamA: match.homeTeam.name,
+                  teamB: match.awayTeam.name,
                   time: match.matches, // utcDate da API
                   oddHome: "2.10",
                   oddDraw: "3.25",
                   oddAway: "3.40",
-                  teamAImg: "lib/assets/default.png",
-                  teamBImg: "lib/assets/default.png",
+                  teamAImg: match.homeTeam.crest,
+                  teamBImg: match.awayTeam.crest,
                 );
               },
             );
