@@ -1,29 +1,25 @@
-import 'package:tecbet/models/awayTeamModel.dart';
-import 'package:tecbet/models/competition.dart';
-import 'package:tecbet/models/homeTeamModel.dart';
-
 class MatchModel {
-  final String id;
-  final String matches;
-  final competitionModel competition;
-  final homeTeamModel homeTeam;
-  final awayTeamModel awayTeam;
+  final int id;
+  final String matches; // vamos usar para o horário
+  final String homeTeam;
+  final String awayTeam;
+  final String competition;
 
   MatchModel({
     required this.id,
     required this.matches,
+    required this.homeTeam,
     required this.awayTeam,
     required this.competition,
-    required this.homeTeam,
   });
 
-  static MatchModel fromJson(Map<String, dynamic> json) {
+  factory MatchModel.fromJson(Map<String, dynamic> json) {
     return MatchModel(
-      awayTeam: awayTeamModel.fromJson(json['awayTeam']),
-      competition: json['competition'],
-      homeTeam: json['homeTeam'],
-      id: json['id'],
-      matches: json['matches'],
+      id: json["id"] ?? 0,
+      matches: json["utcDate"] ?? "",
+      homeTeam: json["homeTeam"]["name"] ?? "",
+      awayTeam: json["awayTeam"]["name"] ?? "",
+      competition: json["competition"]["name"] ?? "",
     );
   }
 }

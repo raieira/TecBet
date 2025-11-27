@@ -4,13 +4,12 @@ import 'package:tecbet/views/bilhete_page.dart';
 import 'package:tecbet/views/live_page.dart';
 import 'package:tecbet/views/validar_page.dart';
 import 'package:tecbet/views/apostas_page.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tecbet/views/login_page.dart';
 
 class HomePage extends StatefulWidget {
   final MatchesController matchesController;
-  
+
   const HomePage({super.key, required this.matchesController});
 
   @override
@@ -21,18 +20,14 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
 
   List<Widget> get pages => [
-     HomeContent(matchesController: widget.matchesController,),
-    const LivePage(),
-    const BilhetePage(),
-    const ValidarPage(),
-    const ApostasPage(),
-  ];
-
-  @override
-  void initState() {
-    super.initState();
-    widget.matchesController.getAllMatch();
-  }
+        HomeContent(
+          matchesController: widget.matchesController,
+        ),
+        const LivePage(),
+        const BilhetePage(),
+        const ValidarPage(),
+        const ApostasPage(),
+      ];
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +117,10 @@ class HomeContent extends StatelessWidget {
 
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (_) =>  LoginPage(matchesController: matchesController,)),
+                      MaterialPageRoute(
+                          builder: (_) => LoginPage(
+                                matchesController: matchesController,
+                              )),
                     );
                   },
                   child: const Icon(
@@ -137,58 +135,43 @@ class HomeContent extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 150,
-                child: CarouselSlider(
-                  options: CarouselOptions(
-                    height: 400.0,
-                    enlargeCenterPage: true,
-                    autoPlay: true,
-                  ),
-                  items: [1, 2, 3].map((i) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          child: Image.asset("lib/assets/banner$i.png"),
-                        );
-                      },
-                    );
-                  }).toList(),
+        child: FutureBuilder(
+          future: matchesController.loadMatches(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+
+            if (snapshot.hasError) {
+              return const Center(
+                child: Text(
+                  "Erro ao carregar partidas",
+                  style: TextStyle(color: Colors.white),
                 ),
-              ),
-              const SizedBox(height: 20),
-              sectionTitle("Futebol"),
-              _buildMatchCard(
-                country: "BRASIL: SÉRIE A",
-                teamA: "FLAMENGO",
-                teamB: "PALMEIRAS",
-                time: "Em breve",
-                oddHome: "2.10",
-                oddDraw: "3.20",
-                oddAway: "3.30",
-                teamAImg: "lib/assets/flamengo.jpg",
-                teamBImg: "lib/assets/palmeiras.png",
-              ),
-              const SizedBox(height: 20),
-              sectionTitle("Basquete"),
-              _buildMatchCard(
-                country: "NBA",
-                teamA: "LAKERS",
-                teamB: "BOSTON CELTICS",
-                time: "Hoje • 22:00",
-                oddHome: "1.80",
-                oddDraw: null,
-                oddAway: "2.10",
-                teamAImg: "lib/assets/lakers.jpg",
-                teamBImg: "lib/assets/celtics.png",
-              ),
-              const SizedBox(height: 40),
-            ],
-          ),
+              );
+            }
+
+            final matches = matchesController.matches;
+
+            return ListView.builder(
+              itemCount: matches.length,
+              itemBuilder: (context, index) {
+                final match = matches[index];
+
+                return _buildMatchCard(
+                  country: match.competition,
+                  teamA: match.homeTeam,
+                  teamB: match.awayTeam,
+                  time: match.matches, // utcDate da API
+                  oddHome: "2.10",
+                  oddDraw: "3.25",
+                  oddAway: "3.40",
+                  teamAImg: "lib/assets/default.png",
+                  teamBImg: "lib/assets/default.png",
+                );
+              },
+            );
+          },
         ),
       ),
     );

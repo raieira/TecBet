@@ -13,8 +13,8 @@ void main() async {
 
   runApp(MyApp(
       logado: logado,
-      matchesController: const MatchesController(
-          repository: MatchRepository(
+      matchesController: MatchesController(
+          repository: const MatchRepository(
         baseUrl: 'https://api.football-data.org/v4',
         token: '8bf39c1b2fc040c09ba3ba3c4ecc89b6',
       ))));

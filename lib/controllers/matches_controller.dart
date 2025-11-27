@@ -4,10 +4,11 @@ import 'package:tecbet/models/match_model.dart';
 class MatchesController {
   final MatchRepository repository;
 
-  const MatchesController({required this.repository});
+  MatchesController({required this.repository});
 
-  Future<List<MatchModel>> getAllMatch() async {
-    return await repository.getAllMatch();
+  List<MatchModel> matches = [];
+
+  Future<void> loadMatches() async {
+    matches = await repository.getAllMatch();
   }
-
 }
