@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tecbet/controllers/matches_controller.dart';
-import 'package:tecbet/models/homeTeamModel.dart';
 import 'package:tecbet/views/bilhete_page.dart';
 import 'package:tecbet/views/live_page.dart';
 import 'package:tecbet/views/validar_page.dart';
