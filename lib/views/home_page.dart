@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_options.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:tecbet/controllers/matches_controller.dart';
 import 'package:tecbet/views/bilhete_page.dart';
@@ -135,45 +137,73 @@ class HomeContent extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: FutureBuilder(
-          future: matchesController.loadMatches(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            }
+          child: SingleChildScrollView(
 
-            if (snapshot.hasError) {
-              return const Center(
-                child: Text(
-                  "Erro ao carregar partidas",
-                  style: TextStyle(color: Colors.white),
-                ),
-              );
-            }
-
-            final matches = matchesController.matches;
-
-            return ListView.builder(
-              itemCount: matches.length,
-              itemBuilder: (context, index) {
-                final match = matches[index];
-
-                return _buildMatchCard(
-                  country: match.competition,
-                  teamA: match.homeTeam.name,
-                  teamB: match.awayTeam.name,
-                  time: match.matches, // utcDate da API
-                  oddHome: "2.10",
-                  oddDraw: "3.25",
-                  oddAway: "3.40",
-                  teamAImg: match.homeTeam.crest,
-                  teamBImg: match.awayTeam.crest,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+        children: [
+          SizedBox(
+            height: 150,
+            child: CarouselSlider(
+              options: CarouselOptions(
+                height: 400.0,
+                enlargeCenterPage: true,
+                autoPlay: true,
+              ),
+              items: [1, 2, 3].map((i) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: Image.asset("lib/assets/banner$i.png"),
+                    );
+                  },
                 );
-              },
-            );
-          },
-        ),
-      ),
+              }).toList(),
+            ),
+          ),
+          FutureBuilder(
+            future: matchesController.loadMatches(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+
+              if (snapshot.hasError) {
+                return const Center(
+                  child: Text(
+                    "Erro ao carregar partidas",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                );
+              }
+
+              final matches = matchesController.matches;
+
+              return ListView.builder(
+                shrinkWrap: true,
+                physics:const NeverScrollableScrollPhysics(),
+                itemCount: matches.length,
+                itemBuilder: (context, index) {
+                  final match = matches[index];
+
+                  return _buildMatchCard(
+                    country: match.competition,
+                    teamA: match.homeTeam.name,
+                    teamB: match.awayTeam.name,
+                    time: match.matches, // utcDate da API
+                    oddHome: "2.10",
+                    oddDraw: "3.25",
+                    oddAway: "3.40",
+                    teamAImg: match.homeTeam.crest,
+                    teamBImg: match.awayTeam.crest,
+                  );
+                },
+              );
+            },
+          ),
+        ],
+      ))),
     );
   }
 
@@ -228,7 +258,7 @@ class HomeContent extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             child: Row(
               children: [
-                Image.asset(teamAImg, height: 32, width: 32),
+                Image.network(teamAImg, height: 32, width: 32),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(teamA,
@@ -242,7 +272,7 @@ class HomeContent extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Row(
               children: [
-                Image.asset(teamBImg, height: 32, width: 32),
+                Image.network(teamBImg, height: 32, width: 32),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(teamB,
